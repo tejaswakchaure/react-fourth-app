@@ -14,21 +14,29 @@ function App() {
 
 function ListDemo() {
 
- let [list,setList ] = useState(["delhi"]);
+  let [list, setList] = useState(["delhi"]);
 
- let addItemAction = () => {
-  let updateList = [...list,"mumbai"];
+  let addItemAction = () => {
 
-   // DOM :: TRIGGER DOM
-  setList(updateList);
- };
+    let inputRef = document.querySelector("#id1");
+    let inputValue = inputRef.value;
+
+    let updateList = [inputValue, ...list, "mumbai"];
+
+    // DOM :: TRIGGER DOM
+    setList(updateList);
+
+    inputRef.value = "";
+  };
 
   return (
     <>
-    <input type="button" value="Add new Item" onClick={addItemAction}/>
-    <hr/>
-   {list.map((item) => (
-    <h1>{item} </h1>))}
+      <input type="text" id="id1" placeholder="Enter user input........" />
+      <input type="button" value="Add new Item" onClick={addItemAction} />
+      <hr />
+
+      {list.map((item) => (
+        <h1>{item} </h1>))}
     </>
   );
 }
