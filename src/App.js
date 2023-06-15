@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef ,useState } from "react";
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
 }
 
 function MyTodo() {
-
+  let [succesBox , setSuccesBox] =useRef(false);
   let [todo,setTodo] = useState({task:"",description : ""});
   
   let changeTaskAction = (e) => {
@@ -29,6 +29,10 @@ function MyTodo() {
 
     let uri = `http://127.0.0.1:4000/add?task=${todo.task}&description=${todo.description}`;
     await fetch(uri);
+
+    let newTodo = {task:"",description : ""};
+
+    setSuccesBox(true);
   }
 
   return (
@@ -40,6 +44,10 @@ function MyTodo() {
 
 
     <input  className="form-control" type="button" value="Add Todo" onClick={addTodoAction} />
+
+    {succesBox && (
+      <div className="alert alert-success">Opration Success</div>
+    )}
     </>
     
   );
