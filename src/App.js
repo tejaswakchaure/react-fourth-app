@@ -8,7 +8,7 @@ function App() {
   );
 
 }
-
+//Reusable + O/p is static
 function MessageDemo() {
   return (
     <>
