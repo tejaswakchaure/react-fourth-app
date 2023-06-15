@@ -1,55 +1,94 @@
-import { useRef,useState } from "react";
+import { useState } from "react";
 
 function App() {
   return (
     <>
-      <h1>My Todo</h1>
-      <MyTodo />
+      <h1>Registration page</h1>
+      <MyRegisration />
     </>
-
   );
 }
 
-function MyTodo() {
-  let [succesBox , setSuccesBox] =useState(false);
-  let [todo,setTodo] = useState({task:"" ,description : ""});
-  
-  let changeTaskAction = (e) => {
-    let newTodo = {...todo,task :e.target.value};
-    setTodo(newTodo);
-  };
-   
-  let changedescriptionAction = (e) => {
-    let newTodo = {...todo,description :e.target.value};
-    setTodo(newTodo);
+function MyRegisration() {
+  let [succesBox, setSuccesBox] = useState(false);
+  let [user, setUser] = useState({
+    username: "",
+    password: "",
+    email: "",
+    mobileNo: "",
+  });
+
+  let changeUsername = (e) => {
+    let newUser = { ...user, username: e.target.value };
+    setUser(newUser);
   };
 
-  let addTodoAction = async() => {
-    //console.log(todo);
+  let changePassword = (e) => {
+    let newUser = { ...user, password: e.target.value };
+    setUser(newUser);
+  };
 
-    let uri = `http://127.0.0.1:4000/add?task=${todo.task}&description=${todo.description}`;
+  let changeEmail = (e) => {
+    let newUser = { ...user, email: e.target.value };
+    setUser(newUser);
+  };
+
+  let changeMobileNo = (e) => {
+    let newUser = { ...user, mobileNo: e.target.value };
+    setUser(newUser);
+  };
+
+  let addUser = async () => {
+    let uri = `http://127.0.0.1:4000/add?username=${user.username}&password=${user.password}&email=${user.email}&mobileNo=${user.mobileNo}`;
     await fetch(uri);
 
-    let newtodo = {task:"",description : ""};
-    setTodo(newtodo);
+    let updateUser = { username: "", password: "", email: "", mobileNo: "" };
     setSuccesBox(true);
   };
 
   return (
     <>
-    <input  className="form-control" type="text" placeholder="enter todo here......" value={todo.task}  onChange={changeTaskAction}/>
+      <input
+        className="form-control"
+        type="text"
+        placeholder="username"
+        value={user.username}
+        onChange={changeUsername}
+      />
 
+      <input
+        className="form-control"
+        type="password"
+        placeholder="password"
+        value={user.password}
+        onChange={changePassword}
+      />
 
-    <textarea  className="form-control"  cols="30" rows=" 3 " placeholder="Enter Description" value={todo.description} onChange={changedescriptionAction}></textarea>
+      <input
+        className="form-control"
+        type="email"
+        placeholder="email"
+        value={user.email}
+        onChange={changeEmail}
+      />
 
+      <input
+        className="form-control"
+        type="text"
+        placeholder="mobile number"
+        value={user.mobileNo}
+        onChange={changeMobileNo}
+      />
 
-    <input  className="form-control" type="button" value="Add Todo" onClick={addTodoAction} />
+      <input
+        className="form-control bg-primary"
+        type="button"
+        value="Registration"
+        onClick={addUser}
+      />
 
-    {succesBox && (
-      <div className="alert alert-success">Opration Success</div>
-    )}
+      {succesBox && <div className="alert alert-success">Opration Success</div>}
     </>
-    
   );
 }
 
