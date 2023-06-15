@@ -5,11 +5,12 @@ function App() {
       <h1>Props Demo</h1>
       {/* this id=hi these are the atribute */}
       {/* attribute name is any valid name */}
+      {/* user cann pass multiple paramete */}
       <MessageDemo/>
       <MessageDemo message="Hello"/>
-      <MessageDemo username="tejas"/>
-      <MessageDemo username="CDAC"/>
-      <MessageDemo name="Tejas Wakchaure"/>
+      <MessageDemo username="tejas" email="tejas@gmail.com" mobileNo="9284671730"/>
+      <MessageDemo username="CDAC" email="tejas@gmail.com" />
+      <MessageDemo name="Tejas Wakchaure" email="tejas@gmail.com" />
       {/* <MessageDemo message="hi" username:"tejas"/> */}
     </>
   );
@@ -17,12 +18,14 @@ function App() {
 }
 //Reusable + O/p is static
 //how to make dynamic..........??
-function MessageDemo(Props) {
-  console.log ("I am inside massageDemo",Props);
+//props ==> destructure
+//accepting unorder
+function MessageDemo({name,email}) {
+  console.log ("I am inside massageDemo");
   return (
     <>
-      <h1>Hello {Props.username}</h1>
-      <h1>Hello {Props.name}</h1>
+      <h1>Hello {name} {email}</h1>
+      
     </>
   )
 }
