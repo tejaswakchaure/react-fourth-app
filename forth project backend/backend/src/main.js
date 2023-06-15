@@ -11,8 +11,9 @@ async function addTodo(req ,res){
     const db = client.db("TODO");
     const myCollection = db.collection("todoInfo");
 
-    let todoData = {task : req.query.task ,
-                   description:req.query.description,
+    let todoData = {
+        task : req.query.task ,
+        description:req.query.description,
     }
     await myCollection.insertOne({todoData});
 
