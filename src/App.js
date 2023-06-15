@@ -28,7 +28,7 @@ function ListDemo() {
     <input type="button" value="Add new Item" onClick={addItemAction}/>
     <hr/>
    {list.map((item) => (
-    <h1> Hello {item} </h1>))}
+    <h1>{item} </h1>))}
     </>
   );
 }
