@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useRef , useState } from "react";
 
 function App() {
   return (
@@ -13,13 +13,14 @@ function App() {
 
 
 function ListDemo() {
-
+  let inputRef = useRef();
   let [list, setList] = useState(["delhi"]);
 
   let addItemAction = () => {
 
-    let inputRef = document.querySelector("#id1");
-    let inputValue = inputRef.value;
+    // for DOM opration React use useref method for taking or finding tag
+    // let inputRef = document.querySelector("#id1");
+    let inputValue = inputRef.current.value;
 
     let updateList = [inputValue, ...list, "mumbai"];
 
@@ -31,7 +32,7 @@ function ListDemo() {
 
   return (
     <>
-      <input type="text" id="id1" placeholder="Enter user input........"/>
+      <input type="text" ref={inputRef} placeholder="Enter user input........"/>
       <input type="button" value="Add new Item" onClick={addItemAction} />
       <hr />
 
