@@ -31,12 +31,12 @@ function ListDemo() {
 
   return (
     <>
-      <input type="text" id="id1" placeholder="Enter user input........" />
+      <input type="text" id="id1" placeholder="Enter user input........"/>
       <input type="button" value="Add new Item" onClick={addItemAction} />
       <hr />
 
       {list.map((item) => (
-        <h1>{item} </h1>))}
+        <h1>{item}</h1>))}
     </>
   );
 }
