@@ -12,29 +12,34 @@ function App() {
 
 function ListDemo() {
   let data = "Hello Brother";
-  let list = ["delhi ", "mumbai", "nashik"];
+  let list = [" ", "", "",""];
+  let list1 = [];
+
+  for(let i=0; i<10; i++){
+    list1.push("hey bro!");
+  }
+
+  //console.log(list1);
 
   return (
     <>
 
-      {/* Geting output of this map */}
-      {/* map is take input and give output */}
-
       <h1>{data}</h1>
 
-      {/* version 1 */}
-      {list.map((item) => (
-        <>
-          <h1>Hello {item}</h1>
-        </>
-
+      {list1.map((item) => (
+        <div>
+          <h1>Hello Universe</h1>
+        </div>
       ))}
-      <hr />
-       {/* version 2 */}
-      {list.map((item) => "Hello" + item)}
-      <hr />
-       {/* version 3 */}
-      {list.map((item) => item)}
+
+      <hr/>
+      {list.map((item) => (
+        <div>
+          <h1>Hello </h1>
+        </div>
+      ))}
+
+
     </>
   );
 }
