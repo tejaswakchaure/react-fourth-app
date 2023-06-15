@@ -10,7 +10,7 @@ function App() {
       <MessageDemo message="Hello"/>
       <MessageDemo username="tejas" email="tejas@gmail.com" mobileNo="9284671730"/>
       <MessageDemo username="CDAC" email="tejas@gmail.com" />
-      <MessageDemo name="Tejas Wakchaure" email="tejas@gmail.com" />
+      <MessageDemo name="Tejas Wakchaure"  />
       {/* <MessageDemo message="hi" username:"tejas"/> */}
     </>
   );
@@ -18,13 +18,13 @@ function App() {
 }
 //Reusable + O/p is static
 //how to make dynamic..........??
-//props ==> destructure
+//props :: destructure
 //accepting unorder
-function MessageDemo({name,email}) {
+function MessageDemo({username,email}) {
   console.log ("I am inside massageDemo");
   return (
     <>
-      <h1>Hello {name} {email}</h1>
+      <h1>Hello {username} {email}</h1>
       
     </>
   )
