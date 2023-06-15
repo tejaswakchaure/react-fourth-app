@@ -12,7 +12,7 @@ async function addTodo(req ,res){
     const myCollection = db.collection("todoInfo");
 
     let todoData = {task : req.query.task ,
-                   description:req.query.description
+                   description:req.query.description,
     }
     await myCollection.insertOne({todoData});
 
