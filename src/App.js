@@ -11,7 +11,9 @@ function App() {
 
 function ListDemo() {
   let inputRef = useRef();
-  let [list, setList] = useState(["delhi"]);
+  let [list, setList] = useState(["I am best"]);
+  let[counter,setCounter] = useState(0);
+  let[counter2,setCounter2] = useState(0);
 
   let addItemAction = () => {
     // console.log(inputRef.current);
@@ -24,6 +26,16 @@ function ListDemo() {
     inputRef.current.value = "";
   };
 
+  let Likeme = () =>{
+    counter = counter +1;
+    setCounter(counter);
+    
+  };
+  let disLikeMe = () =>{
+    counter2 = counter2 +1;
+    setCounter2(counter2);
+    
+  };
   return (
     <>
       <input
@@ -46,8 +58,10 @@ function ListDemo() {
             ducimus accusamus.
           </p>
           <div>
-            <input type="button" value="&#128077;" />
-            <input type="button" value="&#128078;" />
+            {counter}&nbsp;<input type="button" value="&#128077;" onClick={Likeme} />
+            &nbsp;&nbsp;&nbsp;
+            {counter2}&nbsp;<input type="button" value="&#128078;" onClick={disLikeMe}/>
+            <hr/>
           </div>
         </div>
 
