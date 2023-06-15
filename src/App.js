@@ -13,6 +13,7 @@ function App() {
 
 
 function ListDemo() {
+  // useRef is  hook command
   let inputRef = useRef();
   let [list, setList] = useState(["delhi"]);
 
