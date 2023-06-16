@@ -24,7 +24,7 @@ async function addRegi(req ,res){
     res.json({status : "Add succesfully"});
 }
 
-async function readData(){
+async function readData(req,res){
     const uri = "mongodb://127.0.0.1:27017";
     const client = new MongoClient(uri);
 

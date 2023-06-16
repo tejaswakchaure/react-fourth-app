@@ -8,7 +8,7 @@ function MyNavigationLinksUsingButton(){
     }
   
     let goToRegistrationAction =() => {
-      navigate("registration");
+      navigate("/registration");
     }
   
     return(
