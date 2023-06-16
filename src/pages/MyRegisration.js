@@ -34,6 +34,7 @@ function MyRegisration() {
       await fetch(uri);
   
       let updateUser = { username: "", password: "", email: "", mobileNo: "" };
+      setUser(updateUser);
       setSuccesBox(true);
     };
   
