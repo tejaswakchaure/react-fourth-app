@@ -1,11 +1,13 @@
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import MyRegisration from "./pages/MyRegisration";
+// import MyNavigationLink from "./pages/MyNavigationLink";
+import MyNavigationLinksUsingButton from "./pages/MyNavigationLinkUsingButtom";
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <MyNavigationLink />
+        <MyNavigationLinksUsingButton />
         <Routes>
           <Route path="/" element={<h1>Hello</h1>} />
           <Route path="/home" element={<h1>Home</h1>} />
@@ -17,12 +19,5 @@ function App() {
   );
 }
 
-function MyNavigationLink() {
-  return (
-    <>
-      <Link to={"/home"}>Home</Link>
-      <Link to={"/registration"}>registration</Link>
-    </>
-  );
-}
+
 export default App;
