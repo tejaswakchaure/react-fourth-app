@@ -1,6 +1,7 @@
-import {useState} from "react";
+import {useState,useRef} from "react";
 
 function MyRegisration() {
+  let formRef = useRef();
     let [succesBox, setSuccesBox] = useState(false);
     let [user, setUser] = useState({
       username: "",
@@ -30,16 +31,41 @@ function MyRegisration() {
     };
   
     let addUser = async () => {
-      let uri = `http://127.0.0.1:4000/add?username=${user.username}&password=${user.password}&email=${user.email}&mobileNo=${user.mobileNo}`;
-      await fetch(uri);
+
+      try{
+        formRef.current.classList.add("was-validated");
+        let formStatus = formRef.current.checkValidity();
+        if(!formStatus){
+          return ;
+        }
+        let uri = `http://127.0.0.1:4000/add?username=${user.username}&password=${user.password}&email=${user.email}&mobileNo=${user.mobileNo}`;
+        
+
+        let res = await fetch(uri);
+
+        if(res.status != 200){
+          let serverMsg = await res.text();
+          throw new Error(serverMsg);
+        }
+    
+        let updateUser = { username: "", password: "", email: "", mobileNo: "" };
+        setUser(updateUser);
+        setSuccesBox(true);
+        setTimeout(() => {
+          setSuccesBox(false);
+        },5000);
   
-      let updateUser = { username: "", password: "", email: "", mobileNo: "" };
-      setUser(updateUser);
-      setSuccesBox(true);
+        formRef.current.classList.remove("was-validated");
+        // alert("success");
+      }
+      catch(err){
+        alert(err.message);
+      }
     };
   
     return (
       <>
+      <form ref={formRef} className="need-validation" noValidate>
         <input
           className="form-control"
           type="text"
@@ -69,6 +95,7 @@ function MyRegisration() {
           type="text"
           placeholder="mobile number"
           value={user.mobileNo}
+          minLength={10}
           onChange={changeMobileNo}
         />
   
@@ -77,8 +104,8 @@ function MyRegisration() {
           type="button"
           value="Registration"
           onClick={addUser}
-        />
-  
+        />     
+      </form>
         {succesBox && <div className="alert alert-success">Opration Success</div>}
       </>
     );

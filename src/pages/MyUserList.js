@@ -22,7 +22,7 @@ function MyUserList() {
             {userList.map( (item) => (
                 <>
                 <div>
-                    {item.username} {item.password} {item.email} {item.mobile}
+                    {item.username} {item.email} {item.mobileNo}
                 </div>
                 </>
             ))}
