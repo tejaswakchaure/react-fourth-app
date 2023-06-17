@@ -3,6 +3,8 @@ import {useState,useRef} from "react";
 function MyRegisration() {
   let formRef = useRef();
     let [succesBox, setSuccesBox] = useState(false);
+    let [isError , setIsError] = useState(false);
+
     let [user, setUser] = useState({
       username: "",
       password: "",
@@ -57,9 +59,16 @@ function MyRegisration() {
   
         formRef.current.classList.remove("was-validated");
         // alert("success");
+        setSuccesBox(true);
       }
       catch(err){
         alert(err.message);
+        setIsError(true);
+      }finally{
+        setTimeout( () => {
+          setSuccesBox(false);
+          setIsError(false);
+        } ,5000);
       }
     };
   
@@ -107,6 +116,7 @@ function MyRegisration() {
         />     
       </form>
         {succesBox && <div className="alert alert-success">Opration Success</div>}
+        {isError && <div className="alert alert-success">Error</div>}
       </>
     );
   }
